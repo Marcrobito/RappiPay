@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity(),
     private val viewModel by viewModel<MainViewModel>()
     private lateinit var binding: ActivityMainBinding
     private lateinit var adapter: ItemAdapter
+    private var isFirstTry = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,10 @@ class MainActivity : AppCompatActivity(),
             recycler.adapter = adapter
 
             bottomNavigationView.setOnNavigationItemSelectedListener(this@MainActivity)
+
+            reTry.setOnClickListener {
+                viewModel.getPopular()
+            }
 
             recycler.addOnScrollListener(object :
                 RecyclerView.OnScrollListener() {
@@ -51,8 +56,8 @@ class MainActivity : AppCompatActivity(),
         viewModel.getPopular()
 
         viewModel.items.observe(this){
-
-            when(it){
+            binding.reTry.visibility = View.GONE
+                when(it){
                 is Response.Loading -> {
                     binding.loader.visibility = View.VISIBLE
                 }
@@ -60,7 +65,12 @@ class MainActivity : AppCompatActivity(),
                     binding.loader.visibility = View.GONE
                     adapter.update(it.data)
                 }
-                is Response.Error -> binding.loader.visibility = View.GONE
+                is Response.Error -> {
+                    if(isFirstTry){
+                        binding.reTry.visibility = View.VISIBLE
+                    }
+                    binding.loader.visibility = View.GONE
+                }
                 else -> binding.loader.visibility = View.GONE
             }
         }
