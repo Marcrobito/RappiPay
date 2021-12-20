@@ -1,11 +1,13 @@
 package dev.eighteentech.rappipay.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import dev.eighteentech.rappipay.databinding.FragmentDetailBinding
 import dev.eighteentech.rappipay.entities.Response
@@ -18,6 +20,18 @@ class DetailFragment : Fragment() {
     private var movieId:String = "0"
     private lateinit var type:Type
     private val viewModel by viewModel<DetailViewModel>()
+
+    private var listener: FragmentListener? = null
+
+    override fun onAttach(context: Context) {
+        if(context is FragmentListener)
+            listener = context
+        super.onAttach(context)
+        requireActivity().currentFocus?.let { view ->
+            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+            imm?.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
 
 
     override fun onCreateView(
@@ -53,6 +67,12 @@ class DetailFragment : Fragment() {
 
         return binding.root
 
+    }
+
+
+    override fun onDetach() {
+        listener?.onDetailFragmentDetached()
+        super.onDetach()
     }
 
     companion object{

@@ -27,8 +27,6 @@ class MovieRepository(private val api: Api) {
                 list = (list + content) as MutableList<Item>
                 Response.Success(list)
             }
-
-
         } catch (e: Exception) {
             Response.Error(e)
         }

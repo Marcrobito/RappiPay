@@ -19,7 +19,6 @@ class MainViewModel(private val repository: MovieRepository):ViewModel() {
     private val _items = MutableLiveData<Response<List<Item>>>(NotStarted)
     val items : LiveData<Response<List<Item>>> get() = _items
 
-
     private var currentPage = 1
     private var isPopular = true
 
@@ -48,6 +47,8 @@ class MainViewModel(private val repository: MovieRepository):ViewModel() {
             }
         }
     }
+
+
 
     fun nextPage() {
         currentPage ++
