@@ -19,6 +19,12 @@ interface Api {
     @GET("tv/top_rated?language=en-US&api_key=$API_KEY")
     suspend fun getTopRatedTvShows(@Query("page") page: Int = 1): MovieDBResponse
 
+    @GET("/search/movie?language=en-US&api_key=$API_KEY")
+    suspend fun searchMovies(@Query("query") query: String ): MovieDBResponse
+
+    @GET("/search/tv?language=en-US&api_key=$API_KEY")
+    suspend fun searchShows(@Query("query") query: String ): MovieDBResponse
+
     @GET("{type}/{id}/videos?api_key=$API_KEY")
     suspend fun getDetail(
         @Path("id") id: String,

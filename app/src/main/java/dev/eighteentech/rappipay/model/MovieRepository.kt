@@ -55,6 +55,20 @@ class MovieRepository(private val api: Api) {
         }
     }
 
+    suspend fun search(query: String): Response<List<Item>> {
+        return try {
+            val movies: MutableList<Item> = api.searchMovies(query).results.toMutableList()
+            val shows = api.searchShows(query).results.toMutableList()
+            if (movies.isEmpty())
+                Response.Error(Exception(""))
+            else {
+                Response.Success(movies.mix(shows))
+            }
+        } catch (e: Exception) {
+            Response.Error(e)
+        }
+    }
+
     suspend fun getById(id: String, type: String): Response<Detail> {
         return try {
             val detail = api.getDetail(id, type)
