@@ -1,7 +1,5 @@
 package dev.eighteentech.rappipay.entities
 
-import java.sql.Timestamp
-
 data class Item(
     val id: String,
     val poster_path: String,
