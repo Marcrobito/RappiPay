@@ -1,4 +1,4 @@
-package dev.eighteentech.rappipay.ui
+package dev.eighteentech.rappipay.home
 
 import dev.eighteentech.rappipay.entities.Type
 

@@ -1,17 +1,17 @@
 package dev.eighteentech.rappipay.common
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
 import dev.eighteentech.rappipay.R
 import dev.eighteentech.rappipay.common.Constants.IMAGE_BASE_PATH
 import dev.eighteentech.rappipay.databinding.ItemBinding
 import dev.eighteentech.rappipay.entities.Item
 import dev.eighteentech.rappipay.entities.Type
 
-class ItemAdapter(private val listener : ItemSelected? = null) : RecyclerView.Adapter<ItemAdapter.VH>() {
+class ItemAdapter(private val listener: ItemSelected? = null) :
+    RecyclerView.Adapter<ItemAdapter.VH>() {
 
     private var items = listOf<Item>()
 
@@ -22,12 +22,11 @@ class ItemAdapter(private val listener : ItemSelected? = null) : RecyclerView.Ad
 
 
     override fun onBindViewHolder(holder: VH, position: Int) = with(holder.binding) {
-        imageView.setFromUrl(IMAGE_BASE_PATH+items[position].posterPath)
-        var type:Type = Type.Movie
-        val color = if (items[position].title != null){
+        imageView.setFromUrl(IMAGE_BASE_PATH + items[position].posterPath)
+        var type: Type = Type.Movie
+        val color = if (items[position].title != null) {
             root.context.getColor(R.color.movieColor)
-        }
-        else{
+        } else {
             type = Type.Series
             root.context.getColor(R.color.seriesColor)
         }
@@ -48,12 +47,13 @@ class ItemAdapter(private val listener : ItemSelected? = null) : RecyclerView.Ad
 
     override fun getItemCount() = items.size
 
+    @SuppressLint("NotifyDataSetChanged")
     fun update(items: List<Item>) {
         this.items = items
         notifyDataSetChanged()
     }
 }
 
-interface ItemSelected{
-    fun onItemSelected(id:String, type:Type)
+interface ItemSelected {
+    fun onItemSelected(id: String, type: Type)
 }

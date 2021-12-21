@@ -1,4 +1,4 @@
-package dev.eighteentech.rappipay.ui
+package dev.eighteentech.rappipay.search
 
 import android.content.Context
 import android.os.Bundle
@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.eighteentech.rappipay.common.BaseFragment
@@ -15,6 +14,7 @@ import dev.eighteentech.rappipay.common.ItemSelected
 import dev.eighteentech.rappipay.databinding.FragmentSearchBinding
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.entities.Type
+import dev.eighteentech.rappipay.home.FragmentListener
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment : BaseFragment(), ItemSelected {

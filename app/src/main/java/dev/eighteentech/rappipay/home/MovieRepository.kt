@@ -1,4 +1,4 @@
-package dev.eighteentech.rappipay.model
+package dev.eighteentech.rappipay.home
 
 import dev.eighteentech.rappipay.common.mix
 import dev.eighteentech.rappipay.entities.Item

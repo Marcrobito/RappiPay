@@ -1,4 +1,4 @@
-package dev.eighteentech.rappipay
+package dev.eighteentech.rappipay.home
 
 import android.content.Context
 import android.os.Bundle
@@ -8,15 +8,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dev.eighteentech.rappipay.R
 import dev.eighteentech.rappipay.common.ItemAdapter
 import dev.eighteentech.rappipay.common.ItemSelected
 import dev.eighteentech.rappipay.databinding.ActivityMainBinding
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.entities.Type
-import dev.eighteentech.rappipay.ui.DetailFragment
-import dev.eighteentech.rappipay.ui.FragmentListener
-import dev.eighteentech.rappipay.ui.MainViewModel
-import dev.eighteentech.rappipay.ui.SearchFragment
+import dev.eighteentech.rappipay.detail.DetailFragment
+import dev.eighteentech.rappipay.search.SearchFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), ItemSelected, FragmentListener {

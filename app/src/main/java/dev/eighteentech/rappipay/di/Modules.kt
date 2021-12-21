@@ -1,12 +1,12 @@
 package dev.eighteentech.rappipay.di
 
-import dev.eighteentech.rappipay.model.DetailRepository
-import dev.eighteentech.rappipay.model.MovieRepository
-import dev.eighteentech.rappipay.model.SearchRepository
+import dev.eighteentech.rappipay.detail.DetailRepository
+import dev.eighteentech.rappipay.home.MovieRepository
+import dev.eighteentech.rappipay.search.SearchRepository
 import dev.eighteentech.rappipay.network.NetworkService
-import dev.eighteentech.rappipay.ui.DetailViewModel
-import dev.eighteentech.rappipay.ui.MainViewModel
-import dev.eighteentech.rappipay.ui.SearchViewModel
+import dev.eighteentech.rappipay.detail.DetailViewModel
+import dev.eighteentech.rappipay.home.MainViewModel
+import dev.eighteentech.rappipay.search.SearchViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

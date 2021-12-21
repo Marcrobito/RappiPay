@@ -1,4 +1,4 @@
-package dev.eighteentech.rappipay.ui
+package dev.eighteentech.rappipay.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +8,6 @@ import dev.eighteentech.rappipay.entities.Item
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.entities.Response.Loading
 import dev.eighteentech.rappipay.entities.Response.NotStarted
-import dev.eighteentech.rappipay.model.MovieRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

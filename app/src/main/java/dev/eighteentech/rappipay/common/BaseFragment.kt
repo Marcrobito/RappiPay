@@ -3,7 +3,7 @@ package dev.eighteentech.rappipay.common
 import android.content.Context
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
-import dev.eighteentech.rappipay.ui.FragmentListener
+import dev.eighteentech.rappipay.home.FragmentListener
 
 abstract class BaseFragment: Fragment() {
 

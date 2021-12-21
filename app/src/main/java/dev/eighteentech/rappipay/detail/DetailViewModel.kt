@@ -1,4 +1,4 @@
-package dev.eighteentech.rappipay.ui
+package dev.eighteentech.rappipay.detail
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.entities.Video
-import dev.eighteentech.rappipay.model.DetailRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -19,7 +18,7 @@ class DetailViewModel(private val repository: DetailRepository):ViewModel() {
     fun loadDetail(movieId: String, type: String) {
         viewModelScope.launch {
             _detail.value = withContext(Dispatchers.IO){
-                repository.getById(movieId,type)
+                repository.getVideo(movieId,type)
             }
         }
     }

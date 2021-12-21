@@ -11,7 +11,7 @@ data class Item(
     val overview: String,
     val name: String?,
     val title: String?,
-    )
+)
 
 data class MovieDBResponse(
     val page: Int,
@@ -43,14 +43,14 @@ data class VideoResponse(
 )
 
 data class Movie(
-    @SerializedName("original_title")  val title:String,
-    @SerializedName("poster_path") private var posterPath:String,
-    val budget:Double,
-    @SerializedName("release_date") private var releaseDate:String,
-    private var revenue:Double,
-    private var runtime:Int,
-    private var tagline:String,
-    @SerializedName("vote_average")private var vote_average:Double,
-    ){
+    @SerializedName("original_title") val title: String,
+    @SerializedName("poster_path") private var posterPath: String,
+    val budget: Double,
+    @SerializedName("release_date") val releaseDate: String,
+    val revenue: Double,
+    val runtime: Int,
+    val tagline: String,
+    @SerializedName("vote_average") val vote_average: Double,
+) {
     val poster = IMAGE_BASE_PATH + posterPath
 }
