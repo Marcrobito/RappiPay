@@ -2,14 +2,12 @@ package dev.eighteentech.rappipay
 
 import android.content.Context
 import android.os.Bundle
-import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.eighteentech.rappipay.common.ItemAdapter
 import dev.eighteentech.rappipay.common.ItemSelected
 import dev.eighteentech.rappipay.databinding.ActivityMainBinding
@@ -21,8 +19,7 @@ import dev.eighteentech.rappipay.ui.MainViewModel
 import dev.eighteentech.rappipay.ui.SearchFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity(),
-    BottomNavigationView.OnNavigationItemSelectedListener, ItemSelected, FragmentListener {
+class MainActivity : AppCompatActivity(), ItemSelected, FragmentListener {
 
     private val viewModel by viewModel<MainViewModel>()
     private lateinit var binding: ActivityMainBinding
@@ -39,7 +36,14 @@ class MainActivity : AppCompatActivity(),
                 LinearLayoutManager(this@MainActivity, RecyclerView.VERTICAL, false)
             recycler.adapter = adapter
 
-            bottomNavigationView.setOnNavigationItemSelectedListener(this@MainActivity)
+            bottomNavigationView.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.popular -> viewModel.getPopular()
+                    R.id.top -> viewModel.getTopRated()
+                }
+                binding.recycler.layoutManager?.scrollToPosition(0)
+                return@setOnItemSelectedListener true
+            }
 
             reTry.setOnClickListener {
                 viewModel.getPopular()
@@ -78,15 +82,6 @@ class MainActivity : AppCompatActivity(),
                 else -> binding.loader.visibility = View.GONE
             }
         }
-    }
-
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.popular -> viewModel.getPopular()
-            R.id.top -> viewModel.getTopRated()
-        }
-        binding.recycler.layoutManager?.scrollToPosition(0)
-        return true
     }
 
     override fun onItemSelected(id: String, type: Type) {

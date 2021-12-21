@@ -31,9 +31,8 @@ interface Api {
         @Path("type") type: String
     ): VideoResponse
 
-    @GET("{type}/{id}/api_key=$API_KEY")
-    suspend fun getDetail(
-        @Path("id") id: String,
-        @Path("type") type: String
-    ): VideoResponse
+    @GET("movie/{id}/api_key=$API_KEY")
+    suspend fun getMovie(
+        @Path("id") id: String
+    ): Movie
 }

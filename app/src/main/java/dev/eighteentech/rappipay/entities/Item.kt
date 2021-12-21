@@ -1,21 +1,23 @@
 package dev.eighteentech.rappipay.entities
 
+import com.google.gson.annotations.SerializedName
+import dev.eighteentech.rappipay.common.Constants.IMAGE_BASE_PATH
+
 data class Item(
     val id: String,
-    val poster_path: String,
-    val release_date: String?,
-    val first_air_date: String?,
+    @SerializedName("poster_path") val posterPath: String,
+    @SerializedName("release_date") val releaseDate: String?,
+    @SerializedName("first_air_date") val firstAirDate: String?,
     val overview: String,
     val name: String?,
     val title: String?,
-
     )
 
 data class MovieDBResponse(
     val page: Int,
     val results: List<Item>,
-    val total_pages: Int,
-    val total_results: Int
+    @SerializedName("total_pages") val totalPages: Int,
+    @SerializedName("total_results") val totalResults: Int
 )
 
 sealed class Type {
@@ -25,7 +27,6 @@ sealed class Type {
     fun getTypeName(): String = when (this) {
         is Movie -> "movie"
         is Series -> "tv"
-        else -> "movie"
     }
 
 }
@@ -40,3 +41,16 @@ data class VideoResponse(
     val id: String,
     val results: List<Video>
 )
+
+data class Movie(
+    @SerializedName("original_title")  val title:String,
+    @SerializedName("poster_path") private var posterPath:String,
+    val budget:Double,
+    @SerializedName("release_date") private var releaseDate:String,
+    private var revenue:Double,
+    private var runtime:Int,
+    private var tagline:String,
+    @SerializedName("vote_average")private var vote_average:Double,
+    ){
+    val poster = IMAGE_BASE_PATH + posterPath
+}
