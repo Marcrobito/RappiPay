@@ -26,8 +26,14 @@ interface Api {
     suspend fun searchShows(@Query("query") query: String ): MovieDBResponse
 
     @GET("{type}/{id}/videos?api_key=$API_KEY")
+    suspend fun getVideos(
+        @Path("id") id: String,
+        @Path("type") type: String
+    ): VideoResponse
+
+    @GET("{type}/{id}/api_key=$API_KEY")
     suspend fun getDetail(
         @Path("id") id: String,
         @Path("type") type: String
-    ): DetailResponse
+    ): VideoResponse
 }

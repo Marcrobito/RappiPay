@@ -25,18 +25,20 @@ sealed class Type {
     fun getTypeName(): String = when (this) {
         is Movie -> "movie"
         is Series -> "tv"
+        else -> "movie"
     }
 
 }
 
-data class Detail(
+data class Video(
     val name: String,
     val key: String,
     val id: String
 )
 
 
-data class DetailResponse(
+
+data class VideoResponse(
     val id: String,
-    val results: List<Detail>
+    val results: List<Video>
 )

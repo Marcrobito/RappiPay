@@ -7,21 +7,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.widget.doAfterTextChanged
-import androidx.core.widget.doBeforeTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import dev.eighteentech.rappipay.R
+import dev.eighteentech.rappipay.common.BaseFragment
 import dev.eighteentech.rappipay.common.ItemAdapter
 import dev.eighteentech.rappipay.common.ItemSelected
-import dev.eighteentech.rappipay.databinding.ActivityMainBinding
 import dev.eighteentech.rappipay.databinding.FragmentSearchBinding
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.entities.Type
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchFragment : Fragment(), ItemSelected {
+class SearchFragment : BaseFragment(), ItemSelected {
 
     lateinit var query: String
 
@@ -53,7 +50,6 @@ class SearchFragment : Fragment(), ItemSelected {
             if (query != currentSearch)
                 viewModel.search(query)
 
-
             recycler.layoutManager =
                 LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             recycler.adapter = adapter
@@ -66,11 +62,8 @@ class SearchFragment : Fragment(), ItemSelected {
                         currentSearch = it.toString()
                     }
                 }
-
             }
-
         }
-
         viewModel.searchResults.observe(viewLifecycleOwner){
             when(it){
                 is Response.Success -> {
@@ -78,15 +71,10 @@ class SearchFragment : Fragment(), ItemSelected {
                 }
             }
         }
-
-
-
-
         return binding.root
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(query: String) =
             SearchFragment().apply {
@@ -94,13 +82,8 @@ class SearchFragment : Fragment(), ItemSelected {
             }
     }
 
-    override fun onDetach() {
-        listener?.onSearchFragmentDetached()
-        super.onDetach()
-    }
-
     override fun onItemSelected(id: String, type: Type) {
-        requireActivity().supportFragmentManager.beginTransaction().remove(this).commit()
+        removeFragment()
         listener?.onItemSelected(id,type)
     }
 }

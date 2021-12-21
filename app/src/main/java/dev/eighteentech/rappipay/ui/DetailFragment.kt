@@ -9,30 +9,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import dev.eighteentech.rappipay.common.BaseFragment
 import dev.eighteentech.rappipay.databinding.FragmentDetailBinding
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.entities.Type
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class DetailFragment : Fragment() {
+class DetailFragment : BaseFragment() {
 
     private lateinit var binding: FragmentDetailBinding
     private var movieId:String = "0"
     private lateinit var type:Type
     private val viewModel by viewModel<DetailViewModel>()
-
-    private var listener: FragmentListener? = null
-
-    override fun onAttach(context: Context) {
-        if(context is FragmentListener)
-            listener = context
-        super.onAttach(context)
-        requireActivity().currentFocus?.let { view ->
-            val imm = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-            imm?.hideSoftInputFromWindow(view.windowToken, 0)
-        }
-    }
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,21 +49,18 @@ class DetailFragment : Fragment() {
                 is Response.Error -> {
                     binding.progressBar.visibility = View.GONE
                     Toast.makeText(requireContext(), "We couldn't load the data", Toast.LENGTH_LONG).show()
+                    viewLifecycleOwner.lifecycle
+                    lifecycleScope.launch {
+                        delay(3000)
+                        removeFragment()
+                    }
                 }
                 else -> {
                     binding.progressBar.visibility = View.GONE
                 }
             }
         }
-
         return binding.root
-
-    }
-
-
-    override fun onDetach() {
-        listener?.onDetailFragmentDetached()
-        super.onDetach()
     }
 
     companion object{
