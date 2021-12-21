@@ -42,15 +42,29 @@ data class VideoResponse(
     val results: List<Video>
 )
 
-data class Movie(
-    @SerializedName("original_title") val title: String,
-    @SerializedName("poster_path") private var posterPath: String,
-    val budget: Double,
-    @SerializedName("release_date") val releaseDate: String,
-    val revenue: Double,
-    val runtime: Int,
-    val tagline: String,
-    @SerializedName("vote_average") val vote_average: Double,
-) {
-    val poster = IMAGE_BASE_PATH + posterPath
+
+sealed class Detail() {
+
+    data class Movie(
+        @SerializedName("original_title") val title: String,
+        @SerializedName("backdrop_path") val posterPath: String,
+        @SerializedName("release_date") val releaseDate: String,
+        @SerializedName("vote_average") val voteAverage: Double,
+        val overview: String,
+        val tagline: String,
+        val budget: Double,
+        val revenue: Double,
+        val runtime: Int,
+    ) : Detail()
+
+    data class TV(
+        @SerializedName("original_name") val title: String,
+        @SerializedName("backdrop_path") val posterPath: String,
+        @SerializedName("first_air_date") val firstAirDate: String,
+        @SerializedName("vote_average") val voteAverage: Double,
+        val overview: String,
+        val tagline: String,
+        val type: String
+    ) : Detail()
 }
+

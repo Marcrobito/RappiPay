@@ -9,6 +9,18 @@
     android:focusable="true"
     tools:context=".detail.DetailFragment">
 
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/broken"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/app_name" />
+
     <WebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
@@ -18,7 +30,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </WebView>
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -35,7 +49,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6"/>
+        app:layout_constraintGuide_percent="0.4"/>
 
     <TextView
         android:id="@+id/movie_name"
@@ -44,22 +58,67 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:text=""
         android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/webView" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
-    <!--ImageButton
-        android:id="@+id/back_button3"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@null"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ic_left_arrow"
+    <TextView
+        android:id="@+id/tagline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" /-->
+        app:layout_constraintTop_toBottomOf="@+id/movie_name" />
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/release"
+        app:layout_constraintTop_toBottomOf="@+id/tagline" />
+
+    <TextView
+        android:id="@+id/release"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/rate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/date" />
+
+    <TextView
+        android:id="@+id/overview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/rate"
+        app:layout_constraintStart_toStartOf="@+id/release"
+        app:layout_constraintTop_toBottomOf="@+id/release" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

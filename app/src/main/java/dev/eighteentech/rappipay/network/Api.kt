@@ -2,6 +2,8 @@ package dev.eighteentech.rappipay.network
 
 import dev.eighteentech.rappipay.common.Constants.API_KEY
 import dev.eighteentech.rappipay.entities.*
+import dev.eighteentech.rappipay.entities.Detail.Movie
+import dev.eighteentech.rappipay.entities.Detail.TV
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -31,8 +33,13 @@ interface Api {
         @Path("type") type: String
     ): VideoResponse
 
-    @GET("movie/{id}/api_key=$API_KEY")
+    @GET("movie/{id}?api_key=$API_KEY")
     suspend fun getMovie(
         @Path("id") id: String
     ): Movie
+
+    @GET("tv/{id}?api_key=$API_KEY")
+    suspend fun getShow(
+        @Path("id") id: String
+    ): TV
 }

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dev.eighteentech.rappipay.common.BaseFragment
@@ -31,7 +32,6 @@ class SearchFragment : BaseFragment(), ItemSelected {
         if(context is FragmentListener)
             listener = context
         super.onAttach(context)
-
     }
 
     private var currentSearch = ""
@@ -54,7 +54,6 @@ class SearchFragment : BaseFragment(), ItemSelected {
             recycler.adapter = adapter
 
             search.doOnTextChanged { text, _, _, _ ->
-                Log.d("TAG",text.toString())
                 text?.let {
                     if (currentSearch != it.toString()) {
                         viewModel.search(it.toString())

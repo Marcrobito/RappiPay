@@ -22,7 +22,7 @@ class ItemAdapter(private val listener: ItemSelected? = null) :
 
 
     override fun onBindViewHolder(holder: VH, position: Int) = with(holder.binding) {
-        imageView.setFromUrl(IMAGE_BASE_PATH + items[position].posterPath)
+        imageView.setTMDBUrl(items[position].posterPath)
         var type: Type = Type.Movie
         val color = if (items[position].title != null) {
             root.context.getColor(R.color.movieColor)
