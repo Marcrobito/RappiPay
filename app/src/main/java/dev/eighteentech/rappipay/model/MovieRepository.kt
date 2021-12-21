@@ -1,8 +1,6 @@
 package dev.eighteentech.rappipay.model
 
-import android.util.Log
 import dev.eighteentech.rappipay.common.mix
-import dev.eighteentech.rappipay.entities.Detail
 import dev.eighteentech.rappipay.entities.Item
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.network.Api

@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import dev.eighteentech.rappipay.entities.Detail
 import dev.eighteentech.rappipay.entities.Item
 import dev.eighteentech.rappipay.entities.Response
 import dev.eighteentech.rappipay.entities.Response.Loading

@@ -1,11 +1,11 @@
 package dev.eighteentech.rappipay.model
 
-import dev.eighteentech.rappipay.entities.Detail
 import dev.eighteentech.rappipay.entities.Response
+import dev.eighteentech.rappipay.entities.Video
 import dev.eighteentech.rappipay.network.Api
 
 class DetailRepository(private val api: Api)  {
-    suspend fun getById(id: String, type: String): Response<Detail> {
+    suspend fun getById(id: String, type: String): Response<Video> {
         return try {
             val detail = api.getVideos(id, type)
             Response.Success(detail.results[0])

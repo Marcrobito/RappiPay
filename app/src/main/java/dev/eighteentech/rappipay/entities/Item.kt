@@ -36,8 +36,6 @@ data class Video(
     val id: String
 )
 
-
-
 data class VideoResponse(
     val id: String,
     val results: List<Video>
