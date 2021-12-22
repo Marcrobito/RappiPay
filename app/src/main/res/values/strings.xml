@@ -7,4 +7,8 @@
     <string name="release_date">Release date:</string>
     <string name="first_aired">First aired:</string>
     <string name="data_not_found">Data not found</string>
+    <string name="api_base_url">https://api.themoviedb.org/3/</string>
+    <string name="api_key">c0ab4f4064c2ee4aec4985e87413bbd3</string>
+    <string name="image_base_url">https://image.tmdb.org/t/p/original</string>
+    <string name="youtube_base_url">https://www.youtube.com/embed/</string>
 </resources>

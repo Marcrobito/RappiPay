@@ -4,7 +4,7 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import dev.eighteentech.rappipay.R
-import dev.eighteentech.rappipay.common.Constants.IMAGE_BASE_PATH
+import dev.eighteentech.rappipay.common.Constants.IMAGE_BASE_URL
 
 fun <T> List<T>.mix(other: List<T>): List<T> {
     val first = iterator()
@@ -28,7 +28,7 @@ fun ImageView.setFromUrl(url:String){
 fun ImageView.setTMDBUrl(url:String?){
     var u = url?:""
     Glide.with(this)
-        .load(IMAGE_BASE_PATH + u)
+        .load(IMAGE_BASE_URL + u)
         .placeholder(R.drawable.broken)
         .diskCacheStrategy(DiskCacheStrategy.DATA)
         .into(this)

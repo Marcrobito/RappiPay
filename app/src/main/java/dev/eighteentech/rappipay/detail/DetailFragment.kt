@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import dev.eighteentech.rappipay.R
 import dev.eighteentech.rappipay.common.BaseFragment
+import dev.eighteentech.rappipay.common.Constants.YOUTUBE_BASE_URL
 import dev.eighteentech.rappipay.common.setFromUrl
 import dev.eighteentech.rappipay.common.setTMDBUrl
 import dev.eighteentech.rappipay.databinding.FragmentDetailBinding
@@ -39,10 +40,8 @@ class DetailFragment : BaseFragment() {
                 }
                 is Response.Success -> {
                     binding.progressBar.visibility = View.GONE
-
-                    //binding.movieName.text = it.data.name
                     binding.webView.visibility = View.VISIBLE
-                    binding.webView.loadUrl("https://www.youtube.com/embed/${it.data.key}")
+                    binding.webView.loadUrl("$YOUTUBE_BASE_URL${it.data.key}")
                 }
                 is Response.Error -> {
                     binding.progressBar.visibility = View.GONE

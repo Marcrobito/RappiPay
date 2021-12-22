@@ -44,6 +44,7 @@ The project displays a list of popular and top rated movies from [TMDB](https://
 We separated the app on the following modules.
 
 ### Common
+Here we have some resources and classes that will be shared over the application.
 
 ### DI
 
@@ -52,6 +53,7 @@ We separated the app on the following modules.
 ### Entities
 
 ### Home
+In this module we present the home/main screen 
 
 ### Detail
 

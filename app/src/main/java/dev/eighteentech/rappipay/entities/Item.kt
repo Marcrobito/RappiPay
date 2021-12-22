@@ -1,7 +1,6 @@
 package dev.eighteentech.rappipay.entities
 
 import com.google.gson.annotations.SerializedName
-import dev.eighteentech.rappipay.common.Constants.IMAGE_BASE_PATH
 
 data class Item(
     val id: String,

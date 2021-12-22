@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.eighteentech.rappipay.R
-import dev.eighteentech.rappipay.common.Constants.IMAGE_BASE_PATH
 import dev.eighteentech.rappipay.databinding.ItemBinding
 import dev.eighteentech.rappipay.entities.Item
 import dev.eighteentech.rappipay.entities.Type
