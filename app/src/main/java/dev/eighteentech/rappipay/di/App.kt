@@ -1,4 +1,4 @@
-package dev.eighteentech.rappipay
+package dev.eighteentech.rappipay.di
 
 import android.app.Application
 import dev.eighteentech.rappipay.di.apiModule

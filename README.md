@@ -23,7 +23,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following.
+This project was built as a code challenge, using some of the more popular libraries.
+
+The project displays a list of popular and top rated movies from [TMDB](https://developers.themoviedb.org/3/getting-started/introduction) 
 
 ### Built With
 * [Jetpack Architecture Components](https://developer.android.com/topic/libraries/architecture/lifecycle)
@@ -39,22 +41,28 @@ Here's a blank template to get started: To avoid retyping too much info. Do a se
 <!-- OVERVIEW -->
 ## Overview
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+We separated the app on the following modules.
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+### Common
+
+### DI
+
+### Network
+
+### Entities
+
+### Home
+
+### Detail
+
+### Search
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- UNFINISHED -->
 ## Unfinished
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
+### Offline functionality
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
