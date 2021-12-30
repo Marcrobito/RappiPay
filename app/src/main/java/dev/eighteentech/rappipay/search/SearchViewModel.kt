@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dev.eighteentech.rappipay.entities.Item
 import dev.eighteentech.rappipay.entities.Response
-import dev.eighteentech.rappipay.search.SearchRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
